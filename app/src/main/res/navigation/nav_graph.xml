@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainfragment">
+
+    <fragment
+        android:id="@+id/mainfragment"
+        android:name="com.bubnov.navigation.MainFragment"
+        android:label="fragment_mainfragment"
+        tools:layout="@layout/fragment_mainfragment" >
+        <action
+            android:id="@+id/action_mainfragment_to_viewTransactionFragment"
+            app:destination="@id/viewTransactionFragment" />
+        <action
+            android:id="@+id/action_mainfragment_to_chooseRecipeintFragment"
+            app:destination="@id/chooseRecipeintFragment" />
+        <action
+            android:id="@+id/action_mainfragment_to_viewBalanceFragment"
+            app:destination="@id/viewBalanceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseRecipeintFragment"
+        android:name="com.bubnov.navigation.ChooseRecipientFragment"
+        android:label="fragment_choose_recipeint"
+        tools:layout="@layout/fragment_choose_recipient" >
+        <action
+            android:id="@+id/action_chooseRecipeintFragment_to_specifyAmountFragment"
+            app:destination="@id/specifyAmountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.bubnov.navigation.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation" />
+    <fragment
+        android:id="@+id/specifyAmountFragment"
+        android:name="com.bubnov.navigation.SpecifyAmountFragment"
+        android:label="fragment_specify_amount"
+        tools:layout="@layout/fragment_specify_amount" >
+        <action
+            android:id="@+id/action_specifyAmountFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewBalanceFragment"
+        android:name="com.bubnov.navigation.ViewBalanceFragment"
+        android:label="fragment_view_balance"
+        tools:layout="@layout/fragment_view_balance" />
+    <fragment
+        android:id="@+id/viewTransactionFragment"
+        android:name="com.bubnov.navigation.ViewTransactionFragment"
+        android:label="fragment_view_transaction"
+        tools:layout="@layout/fragment_view_transaction" />
+</navigation>
