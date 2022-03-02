@@ -8,14 +8,18 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ChooseRecipientFragment extends Fragment  implements View.OnClickListener{
 
+    private static final String TAG = "ARGS:";
     NavController navController;
     TextInputEditText etRecipient;
 
@@ -37,6 +41,18 @@ public class ChooseRecipientFragment extends Fragment  implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.btnNext) navController.navigate(R.id.action_chooseRecipeintFragment_to_specifyAmountFragment);
+        if (view.getId() == R.id.btnNext){
+            if(!TextUtils.isEmpty(etRecipient.getText())) {
+                Log.i(TAG, String.valueOf(etRecipient.getText()));
+                Bundle args = new Bundle();
+                args.putString("recipient", String.valueOf(etRecipient.getText()));
+                navController.navigate(R.id.action_chooseRecipeintFragment_to_specifyAmountFragment, args);
+            }else{
+                etRecipient.setError("Enter a recipient!");
+                //Toast.makeText(getActivity(), "Enter a recipient!", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            requireActivity().onBackPressed();
+        }
     }
 }
